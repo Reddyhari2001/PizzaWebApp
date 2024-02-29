@@ -1,0 +1,45 @@
+﻿@model IEnumerable<PizzaWebApp.Models.onlinepizza>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Welcome to Joe's Pizza Shop</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PizzaId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PizzaId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Add to Cart", "Cart", new { id = item.PizzaId }) |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
